@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\begin{document}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=14cm,
+    height=8cm,
+    xlabel={Week},
+    ylabel={Weekly Return},
+    xmin=0, xmax=51,      
+    legend pos=north east, 
+    legend style={
+        draw=none,
+        fill=white,
+        fill opacity=0.8,
+        font=\footnotesize
+    },
+    grid=both,
+    title={Weekly Returns of Selected Assets},
+    % Font size adjustments:
+    title style={font=\Large\bfseries},
+    xlabel style={font=\Large},
+    ylabel style={font=\Large},
+    ticklabel style={font=\Large},
+]
+
+\addplot[blue, thick] table {tikz_data/aapl_returns.dat};
+\addlegendentry{AAPL}
+
+\addplot[red, thick] table {tikz_data/coca_returns.dat};
+\addlegendentry{Coca}
+
+\addplot[green!70!black, thick] table {tikz_data/jpm_returns.dat};
+\addlegendentry{JPM}
+
+\addplot[orange, thick] table {tikz_data/uhealth_returns.dat};
+\addlegendentry{UHealth}
+
+\addplot[purple, thick] table {tikz_data/xom_returns.dat};
+\addlegendentry{XOM}
+
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+\end{document}
