@@ -1,0 +1,5 @@
+method         f_P_gamma     f_true_gamma
+Jeffreys       -0.020339    -0.027142
+Jeffreys(MC)   -0.020433    -0.027149
+Right(MC)      -0.010191    -0.022740
+Sample         0.020712    -0.028570
