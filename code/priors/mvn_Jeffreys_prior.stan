@@ -1,0 +1,19 @@
+data {
+  int<lower=0> n;               // number of observations
+  int<lower=1> k;               // dimension
+  array[n] vector[k] y;         // y[n] is k-dimensional
+}
+parameters {
+  vector[k] mu;                 // mean vector
+  cov_matrix[k] Sigma;          // k x k covariance matrix
+}
+model {
+  // Prior on mu:
+  mu ~ normal(0, 10);
+
+  // Jeffreys prior on Sigma: pi(Sigma) ∝ |Sigma|^{-(k+1)/2}
+  target += -0.5 * (k + 1) * log_determinant(Sigma);
+
+  // Likelihood:
+  y ~ multi_normal(mu, Sigma);
+}
